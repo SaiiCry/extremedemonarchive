@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hyu-tracker.wegic.net/sitemap.xml
