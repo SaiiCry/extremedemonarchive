@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #06070a;
+    color: #f5f6f9;
+  }
+}
+
+/* Custom scrollbar to match Geometry Dash extreme aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #06070a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1c2230;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff1e27;
+}
+
+/* Custom glow borders */
+.border-glow-red {
+  border-color: rgba(255, 30, 39, 0.3);
+  box-shadow: 0 0 15px rgba(255, 30, 39, 0.1);
+}
+
+.border-glow-purple {
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+}
+
+/* Published status pulse animation (green) */
+@keyframes indefinite-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.0);
+    border-color: rgba(31, 38, 51, 1) !important;
+  }
+  50% {
+    box-shadow: 0 0 18px 3px rgba(34, 197, 94, 0.25), 0 0 6px 1px rgba(34, 197, 94, 0.15) inset;
+    border-color: rgba(34, 197, 94, 0.5) !important;
+  }
+}
+
+.animate-indefinite {
+  animation: indefinite-pulse 2.5s ease-in-out infinite;
+}
+.bg-grid-overlay {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+}
