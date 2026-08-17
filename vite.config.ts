@@ -2,7 +2,6 @@ import path from 'node:path';
 import react from '@vitejs/plugin-react';
 import { defineConfig, loadEnv } from 'vite';
 import clientErrorLogger from 'vite-plugin-client-error-logger';
-import { createHtmlPlugin } from 'vite-plugin-html';
 import { reactFiberSource } from 'vite-plugin-react-fiber-source';
 
 // https://vite.dev/config/
@@ -12,24 +11,15 @@ export default defineConfig(({ command, mode }) => {
   const normalizedBaseCdnUrl = baseCdnUrl && !baseCdnUrl.endsWith('/') ? `${baseCdnUrl}/` : baseCdnUrl;
 
   return {
-    base: command === 'build' ? (normalizedBaseCdnUrl ?? './') : './',
+    base: '/extremedemonarchive/',
+    build: {
+      outDir: 'docs'
+    },
     plugins: [
       reactFiberSource(), // Must be used before react() to inject source into _debugInfo.
       react(),
       clientErrorLogger(),
-      createHtmlPlugin({
-        inject: {
-          tags: [
-            {
-              tag: 'script',
-              attrs: {
-                src: `https://cdn.wegic.ai/assets/onepage/overwrite/sandbox-scripts/sandbox-script-manager.js?_ts=${Date.now()}`,
-              },
-              injectTo: 'body',
-            },
-          ],
-        },
-      }),
+      // El script de Wegic ha sido eliminado de aquí
     ],
     resolve: {
       alias: {
