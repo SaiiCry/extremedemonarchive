@@ -1,0 +1,28 @@
+name: Actualizar Base de Datos de Niveles
+
+on:
+  schedule:
+    # Se ejecuta todos los días a las 09:00 UTC (3:00 AM hora México)
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Te permite correrlo manualmente con un botón
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Instalar librerías
+        run: pip install pandas supabase
+
+      - name: Ejecutar script de actualización
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python actualizar_bd.py
