@@ -1,8 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
 // 这些值会在部署时通过环境变量注入
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+const supabaseUrl = 'https://hxvohfnykvzhkelfmiyt.supabase.co/rest/v1/';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4dm9oZm55a3Z6aGtlbGZtaXl0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY5MjU5NzAsImV4cCI6MjEwMjUwMTk3MH0.xVSy1B74NSGr0TU9f5IG_DTeWlbbHs1zZl_VIobIqoA';
 
 /**
  * Supabase 客户端实例
